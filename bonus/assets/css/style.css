@@ -1,0 +1,58 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.my_container {
+    max-width: 1200px;
+    height: 100vh;
+    margin: auto;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+}
+
+.my_carousel {
+    height: 300px;
+    background-color: red;
+    width: 100%;
+    position: relative;
+
+}
+
+.my_btn {
+    border: none;
+    background-color: lightgray;
+    width: 2rem;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    vertical-align: middle;
+}
+
+.next {
+    position: absolute;
+    top: 1rem;
+    left: 50%;
+    transform: translate(-50%);
+    z-index: 2;
+}
+
+.prev {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translate(-50%);
+    z-index: 2;
+}
+.active{
+    display: block;
+}
