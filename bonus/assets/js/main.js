@@ -7,41 +7,54 @@ const imgList = [
 ];
 
 const carousel = document.querySelector('.my_carousel');
+const controls= document.querySelector('.controls');
 const nextButton = document.querySelector('.next');
 const prevButton = document.querySelector('.prev');
 let active = 0;
 
 for (let i = 0; i < imgList.length; i++) {
     const listEl = imgList[i];
-    const image = `<img class="${(i === 0) ? 'active' : ''}" src=${listEl} alt="">`;
-    carousel.insertAdjacentHTML('beforeend', image);
+    const imageCarousel = `<img class="${(i === 0) ? 'active' : ''} img_carousel" src=${listEl} alt="">`;
+    const imageControls = `<img class="${(i === 0) ? 'grayscale' : ''} img_controls" src=${listEl} alt="">`;
+    carousel.insertAdjacentHTML('beforeend', imageCarousel);
+    controls.insertAdjacentHTML('beforeend', imageControls);
 }
 
-nextButton.addEventListener('click', function () {
-    const allImage = document.querySelectorAll('img');
-    const elementActive = allImage[active];
+prevButton.addEventListener('click', function () {
+    const allImageCarousel = document.querySelectorAll('.img_carousel');
+    const allImageControls = document.querySelectorAll('.img_controls');
+    
+    const elementActive = allImageCarousel[active];
+    const elementActive2 = allImageControls[active];
     elementActive.classList.remove("active");
+    elementActive2.classList.remove("grayscale");
     if (active===4){
         active = 0
     }else{
         active++;  
     }
-    allImage[active].classList.add('active');
+    allImageCarousel[active].classList.add('active');
+    allImageControls[active].classList.add('grayscale');
+    
     
 });
 
-prevButton.addEventListener('click', function () {
+nextButton.addEventListener('click', function () {
    
-    const allImage = document.querySelectorAll('img');
-    const elementActive = allImage[active];
+    const allImageCarousel = document.querySelectorAll('.img_carousel');
+    const allImageControls = document.querySelectorAll('.img_controls');
+    
+    const elementActive = allImageCarousel[active];
+    const elementActive2 = allImageControls[active];
     elementActive.classList.remove("active");
+    elementActive2.classList.remove("grayscale");
     if (active===0){
         active = 4
     }else{
         active--;  
     }
-  
-    allImage[active].classList.add('active');
+    allImageCarousel[active].classList.add('active');
+    allImageControls[active].classList.add('grayscale');
 });
 
 
