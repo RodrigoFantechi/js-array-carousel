@@ -3,8 +3,7 @@ const imgList = [
     "assets/img/02.webp",
     "assets/img/03.webp",
     "assets/img/04.webp",
-    "assets/img/05.webp",
-    
+    "assets/img/05.webp"
 ];
 
 const carousel = document.querySelector('.my_carousel');
@@ -16,15 +15,19 @@ let active = 0;
 for (let i = 0; i < imgList.length; i++) {
     const listEl = imgList[i];
     const imageCarousel = `<img class="${(i === active) ? 'active' : ''} img_carousel" src=${listEl} alt="">`;
-    const imageControls = `<img class="${(i === active) ? 'grayscale' : ''} img_controls" src=${listEl} alt="">`;
+    const imageControls = `<img style=" height: calc(100%/${imgList.length});" class="${(i === active) ? 'grayscale' : ''} img_controls" src=${listEl} alt="">`;
     carousel.insertAdjacentHTML('beforeend', imageCarousel);
     controls.insertAdjacentHTML('beforeend', imageControls);
 }
 
+const allImageCarousel = document.querySelectorAll('.img_carousel');
+const allImageControls = document.querySelectorAll('.img_controls');
+
+
+
 prevButton.addEventListener('click', function () {
-    const allImageCarousel = document.querySelectorAll('.img_carousel');
-    const allImageControls = document.querySelectorAll('.img_controls');
-    
+
+
     const elementActive = allImageCarousel[active];
     const elementActive2 = allImageControls[active];
     elementActive.classList.remove("active");
@@ -43,8 +46,6 @@ prevButton.addEventListener('click', function () {
 
 nextButton.addEventListener('click', function () {
    
-    const allImageCarousel = document.querySelectorAll('.img_carousel');
-    const allImageControls = document.querySelectorAll('.img_controls');
     
     const elementActive = allImageCarousel[active];
     const elementActive2 = allImageControls[active];
@@ -58,5 +59,3 @@ nextButton.addEventListener('click', function () {
     allImageCarousel[active].classList.add('active');
     allImageControls[active].classList.add('grayscale');
 });
-
-
