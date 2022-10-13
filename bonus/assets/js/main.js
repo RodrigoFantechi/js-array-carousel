@@ -4,6 +4,7 @@ const imgList = [
     "assets/img/03.webp",
     "assets/img/04.webp",
     "assets/img/05.webp",
+    
 ];
 
 const carousel = document.querySelector('.my_carousel');
@@ -14,8 +15,8 @@ let active = 0;
 
 for (let i = 0; i < imgList.length; i++) {
     const listEl = imgList[i];
-    const imageCarousel = `<img class="${(i === 0) ? 'active' : ''} img_carousel" src=${listEl} alt="">`;
-    const imageControls = `<img class="${(i === 0) ? 'grayscale' : ''} img_controls" src=${listEl} alt="">`;
+    const imageCarousel = `<img class="${(i === active) ? 'active' : ''} img_carousel" src=${listEl} alt="">`;
+    const imageControls = `<img class="${(i === active) ? 'grayscale' : ''} img_controls" src=${listEl} alt="">`;
     carousel.insertAdjacentHTML('beforeend', imageCarousel);
     controls.insertAdjacentHTML('beforeend', imageControls);
 }
@@ -28,7 +29,8 @@ prevButton.addEventListener('click', function () {
     const elementActive2 = allImageControls[active];
     elementActive.classList.remove("active");
     elementActive2.classList.remove("grayscale");
-    if (active===4){
+    
+    if (active===(imgList.length-1)){
         active = 0
     }else{
         active++;  
@@ -49,7 +51,7 @@ nextButton.addEventListener('click', function () {
     elementActive.classList.remove("active");
     elementActive2.classList.remove("grayscale");
     if (active===0){
-        active = 4
+        active = (imgList.length-1)
     }else{
         active--;  
     }
